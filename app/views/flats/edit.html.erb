@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="mt-5 text-center" style="width: 50%; margin: 0 auto">
+    <h5 class="text-center mb-4">Currently editing <strong><%= @flat.name %></strong></h5>
+    <%= render 'form', flat: @flat %>
+  </div>
+  <div class="text-center">
+    <%= link_to 'Back to flats', flats_path, class: 'btn btn-outline-primary mt-5' %>
+  </div>
+</div>

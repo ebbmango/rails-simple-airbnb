@@ -1,0 +1,57 @@
+<div class="map" style="background-image: url(https://loremflickr.com/1080/720/airbnb/all); height: 350px; width: 100%"></div>
+
+<div class="container margin-top-negative">
+  <div class="row">
+  <div class="col-8">
+    <div class="card p-4">
+      <div class="row">
+        <div class="col-10">
+          <h1 class="card-title"><%= @flat.name %></h1>
+          <p class="card-subtitle mt-1"><%= @flat.address %></p>
+        </div>
+        <div class="col-2 text-center list-group d-flex">
+          <%= link_to 'Edit', edit_flat_path(@flat), class: 'text-secondary list-group-item', style: 'text-decoration: none' %>
+          <%= link_to 'Delete', flat_path(@flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'list-group-item text-secondary', style: 'text-decoration: none' %>
+        </div>
+      </div>
+    </div>
+    <div class="card p-4 mt-4">
+      <h5 class="card-title">This flat's location</h5>
+      <div class="map mt-3" style="border-radius: 5px; background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwinningwp.com%2Fwp-content%2Fuploads%2F2019%2F05%2Fsimple-google-maps-short-code-example.png&f=1&nofb=1&ipt=c662c425e049cdad5e0454eba68be839c7691c209d7845b0f093ef4d98c8e482&ipo=images')"></div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card p-4">
+      <h5 class="card-title">Book this place:</h5>
+      <form action="">
+      <div class="input-group">
+        <span class="input-group-text" id="start-date-label">From:</span>
+        <input type="text" class="form-control" aria-label="start-date" aria-described-by="start-date-label" placeholder="<%= Date.today.strftime("%d/%m/%Y") %>">
+      </div>
+      <div class="input-group mt-2">
+        <span class="input-group-text" id="end-date-label">To:</span>
+        <input type="text" class="form-control" aria-label="start-date" aria-described-by="start-date-label" placeholder="<%= (Date.today + 30).strftime("%d/%m/%Y") %>">
+      </div>
+      <input class="btn btn-success w-100 mt-3" type="submit" value="Book">
+      </form>
+    </div>
+    <div class="card p-4 mt-4">
+      <h5 class="card-title">Details</h5>
+      <p><%= @flat.description %></p>
+      <div class="d-flex justify-content-around">
+        <div>
+          <p class="card-subtitle text-muted">Number of guests</p>
+          <h6 class="text-center text-muted mt-2"> <%= @flat.number_of_guests %> <i class="fa-solid fa-user-large"></i> </h6>
+        </div>
+        <div>
+          <p class="card-subtitle text-muted">Price per night</p>
+          <h6 class="text-center text-muted mt-2">R$ <%= @flat.price_per_night %>,00</h6>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <%= link_to 'Back to flats', flats_path, class: 'mt-5 btn btn-primary' %>
+    </div>
+  </div>
+  </div>
+</div>

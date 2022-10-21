@@ -5,8 +5,7 @@ class FlatsController < ApplicationController
     @flats = Flat.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @flat = Flat.new
@@ -14,15 +13,24 @@ class FlatsController < ApplicationController
 
   def create
     @flat = Flat.new(flat_params)
+    if @flat.save
+      redirect_to flat_path(@flat)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    if @flat.update(flat_params)
+      redirect_to flat_path(@flat)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
-  def delete
+  def destroy
     @flat.destroy
     redirect_to flats_path, status: :see_other
   end
